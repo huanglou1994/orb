@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Login from '../views/login.vue'
 import Home from '../views/home.vue'
+import Main from '../views/main.vue'
 import axios from 'axios'
 
 Vue.use(VueRouter)
@@ -22,7 +23,7 @@ axios.interceptors.request.use(function (config) {
 export default new VueRouter({
   routes: [
     {path: '/login', name: 'login', component: Login},
-    {path: '/', name: 'home', component: Home}
+    {path: '/', name: 'home', component: Home, redirect: {path: 'main'}, children: [{path: 'main', name: 'main', component: Main}]}
   ],
   mode: 'history'
 })

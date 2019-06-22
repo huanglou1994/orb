@@ -39,10 +39,7 @@ export default {
     }
   },
   methods: {
-    // 这里是表单验证
-    abc () {
-      console.log(11111)
-    },
+    // 这里是login登入验证
     loginSubmitForm (loginForm) {
       this.$refs[loginForm].validate(valid => {
         if (valid) {
@@ -53,6 +50,8 @@ export default {
               console.log(res)
               // 登入成功后绑定一恶搞token
               localStorage.setItem('mytoken', res.data.token)
+              // localStorage.setItem('username', res.data.username)
+              this.$store.commit('getLoginName', res.data.username)
               this.$message({
                 showClose: true,
                 message: res.meta.msg,
